@@ -1,6 +1,8 @@
 # cpp-flashcards
 
-A comprehensive C++ flashcard deck for Anki. With 585 cards it covers:
+![Cards](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSencudra%2Fcpp-flashcards%2Fmain%2Fdeck.json&query=%24.notes.length&label=Flashcards&color=blue)
+
+A comprehensive C++ flashcard deck for Anki. It covers:
 
 - **Basics**: statements, functions, variables, syntax, data types
 - **Type Conversion**: implicit/explicit conversions, casts

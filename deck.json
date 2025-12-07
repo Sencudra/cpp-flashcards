@@ -23,17 +23,37 @@
       ],
       "fsrsParams5": [],
       "fsrsParams6": [],
-      "fsrsWeights": [],
+      "fsrsWeights": [
+        0.4,
+        0.6,
+        2.4,
+        5.8,
+        4.93,
+        0.94,
+        0.86,
+        0.01,
+        1.49,
+        0.14,
+        0.94,
+        2.18,
+        0.05,
+        0.34,
+        1.26,
+        0.29,
+        2.61
+      ],
       "ignoreRevlogsBeforeDate": "1970-01-01",
       "interdayLearningMix": 2,
       "lapse": {
         "delays": [
-          10.0
+          1,
+          5,
+          10
         ],
         "leechAction": 1,
         "leechFails": 8,
         "minInt": 1,
-        "mult": 0.0
+        "mult": 0
       },
       "maxTaken": 60,
       "name": "Default",
@@ -50,7 +70,7 @@
           0
         ],
         "order": 1,
-        "perDay": 10
+        "perDay": 20
       },
       "newGatherPriority": 0,
       "newMix": 1,
@@ -64,7 +84,7 @@
         "hardFactor": 1.2,
         "ivlFct": 1.0,
         "maxIvl": 365,
-        "perDay": 100
+        "perDay": 200
       },
       "reviewOrder": 0,
       "secondsToShowAnswer": 0.0,
@@ -74,6 +94,95 @@
       "timer": 1,
       "waitForAudio": true,
       "weightSearch": ""
+    },
+    {
+      "__type__": "DeckConfig",
+      "name": "Standard",
+      "crowdanki_uuid": "5ff528d4-cf8d-11f0-98d8-1d42bb598edb",
+      "autoplay": true,
+      "replayq": true,
+      "timer": 0,
+      "dyn": false,
+      "new": {
+        "perDay": 20,
+        "delays": [
+          1,
+          10
+        ],
+        "ints": [
+          1,
+          4,
+          0
+        ],
+        "initialFactor": 2500,
+        "bury": true,
+        "order": 1
+      },
+      "rev": {
+        "perDay": 200,
+        "ease4": 1.3,
+        "ivlFct": 1,
+        "maxIvl": 36500,
+        "bury": true,
+        "minSpace": 1,
+        "hardFactor": 1.2
+      },
+      "lapse": {
+        "delays": [
+          10
+        ],
+        "mult": 0,
+        "minInt": 1,
+        "leechFails": 8,
+        "leechAction": 0
+      },
+      "desiredRetention": 0.9,
+      "sm2Retention": 0.9,
+      "newMix": 0,
+      "newPerDayMinimum": 0,
+      "interdayLearningMix": 0,
+      "reviewOrder": 0,
+      "newSortOrder": 0,
+      "newGatherPriority": 0,
+      "buryInterdayLearning": true,
+      "easyDaysPercentages": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "secondsToShowQuestion": 0,
+      "secondsToShowAnswer": 0,
+      "stopTimerOnAnswer": false,
+      "waitForAudio": false,
+      "weightSearch": "",
+      "ignoreRevlogsBeforeDate": "1970-01-01",
+      "fsrsParams5": [],
+      "fsrsParams6": [],
+      "fsrsWeights": [
+        0.4,
+        0.6,
+        2.4,
+        5.8,
+        4.93,
+        0.94,
+        0.86,
+        0.01,
+        1.49,
+        0.14,
+        0.94,
+        2.18,
+        0.05,
+        0.34,
+        1.26,
+        0.29,
+        2.61
+      ],
+      "answerAction": 0,
+      "questionAction": 0
     }
   ],
   "desc": "",
@@ -8471,6 +8580,253 @@
       "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
       "tags": [
         "Types",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What is the Overload Pattern and why is it used?  \n\n",
+        "Combine multiple lambdas into a single callable to handle multiple types in <code>std::visit</code>.\n\n<pre><code>\ntemplate<class... ts=\"\">\nstruct overloaded : Ts... { using Ts::operator()...; };\n\ntemplate<class... ts=\"\"> overloaded(Ts...) -&gt; overloaded<ts...>;\n\nstd::variant<int, std::string=\"\"> v = \"hello\";\n\nstd::visit(overloaded{     \n[](int i){ \n    std::cout &lt;&lt; \"int: \" &lt;&lt; i; \n},\n[](const std::string&amp; s){ std::cout &lt;&lt; \"string: \" &lt;&lt; s; } }, v);`</int,></ts...></class...></class...>\n\n</code></pre>\n\n"
+      ],
+      "guid": "qdYJ.Wn&7j",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "STL",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "<pre><code>\nstd::vector<std::string> vec{};\nstd::vector<std::string_view> views{};\n\nvec.emplace_back(\"abc\");\nviews.emplace_back(std::string_view{vec[0]});\n\nvec.emplace_back(\"bcd\");\nviews.emplace_back(std::string_view{vec[1]});\n\nvec.emplace_back(\"cde\");\nviews.emplace_back(std::string_view{vec[2]});\n\nstd::cout &lt;&lt; views[0] &lt;&lt; std::endl;\nstd::cout &lt;&lt; views[1] &lt;&lt; std::endl;\nstd::cout &lt;&lt; views[2] &lt;&lt; std::endl;\n</code></pre>\n\nWhat is the output?",
+        "UB/segfault"
+      ],
+      "guid": "AI*B{kjmi{",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Strings",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What happens inside the closure type when capturing by value <code>[=]</code>?",
+        "Only variables **actually used** inside the lambda body are stored as fields."
+      ],
+      "guid": "x<8Yu`[yeD",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Does a lambda have copy/move constructors?",
+        "Yes, the closure type has implicitly generated copy/move constructors unless prohibited by captures."
+      ],
+      "guid": "Ra?L7f}?0d",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Can lambda closure types be assigned?",
+        "Yes, unless one of their members is non-assignable (e.g., references or const members)."
+      ],
+      "guid": "M#7~Z2$#OM",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What is captured in a lambda?",
+        "Only local variables (including parameters). Members are accessed via capturing <code>this</code>."
+      ],
+      "guid": "pm{Crf_}3:",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Why can’t a lambda modify a captured-by-value variable by default?",
+        "Because the lambda captures the variable as a copy stored inside the closure object, and the generated operator() is const, which prevents modifying that stored copy."
+      ],
+      "guid": "G9N|l~IPe",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What does <code>[&amp;]</code> in lambdas mean?  ",
+        "Capture all used variables by reference."
+      ],
+      "guid": "oT)/XdJepb",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What does <code>[&amp;, x]</code> in lambda mean?",
+        "Capture everything by reference, except `x` which is captured by value."
+      ],
+      "guid": "k2!!]+w%B4",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Are static variables required to be captured in lambda?",
+        "No, static variables can always be accessed directly."
+      ],
+      "guid": "PAHyhK7$*M",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What does this lambda capture?\n\n<code>\nauto L = [n = 2 + 2](){};\n</code>",
+        "Captures a new variable <code>n</code> initialized using the expression <code>2 + 2</code>."
+      ],
+      "guid": "$%(ZTuzN4",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What is a generic lambda?",
+        "A lambda whose parameters use <code>auto</code>, making the lambda a template.\n\n<code>\nauto L = [](auto x, auto y){ return x + y; };\n</code>"
+      ],
+      "guid": "w4oV3k/u8[",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What feature powers generic lambdas internally?  ",
+        "The closure's <code>operator()</code> becomes a function template."
+      ],
+      "guid": "eAV!KOKkj;",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "What does this do?\n\n<code>\n+[](int a, int b){ return a &lt; b; };\n</code>",
+        "Performs an _unary plus hack_ that forces conversion to a function pointer, valid only if the lambda has **no captures**. It triggers _integral and pointer promotion rules_ and requests a function pointer type."
+      ],
+      "guid": "mF@n,gZQOZ",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Can capturing lambdas be converted to function pointers?  ",
+        "No, only captureless lambdas can be converted."
+      ],
+      "guid": "hvAo)@b7W^",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Does a capture-by-value copy happen at lambda construction or invocation?",
+        "At lambda **construction**."
+      ],
+      "guid": "EFr7sW&FrP",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Can a lambda be <code>constexpr</code>?  ",
+        "Yes, if the body satisfies constexpr rules."
+      ],
+      "guid": "L@N:2cFAE{",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "Can lambda be forward declared?  ",
+        "No, Its type is unnamed and unique; it exists only at the point of definition."
+      ],
+      "guid": "r!5Hrh6n2`",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
+        "Advanced"
+      ]
+    },
+    {
+      "__type__": "Note",
+      "fields": [
+        "When does capturing <code>this</code> in lambda become dangerous?  ",
+        "If the lambda outlives the object (<code>this</code> becomes dangling)."
+      ],
+      "guid": "MxI*7T%Dm>",
+      "note_model_uuid": "4ff54864-cf8d-11f0-98d8-1d42bb598edb",
+      "tags": [
+        "Lambdas",
         "Advanced"
       ]
     }
